@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Line Configuration</title>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: #1f2937;
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .navbar h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h2 {
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            margin-top: .25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: .25rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: .75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f9fafb;
+        }
+
+        .navbar {
+            background: #1f2937;
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nav-icon:hover {
+            color: #60a5fa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <nav class="navbar">
+        <h1>Paint Line Configuration</h1>
+    </nav> -->
+<nav class="navbar">
+    <div class="nav-left">
+        <h1>Paint Line Configuration</h1>
+        <i class="fa-solid fa-house nav-icon"></i>
+        <!-- <i class="fa-solid fa-history"></i> -->
+        <!-- <i class="fa-solid fa-magnifying-glass nav-icon"></i> -->
+         <i class="fa-solid fa-clipboard-list"></i>
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+    </div>
+
+    <div class="nav-right">
+         <!-- <i class="fa-solid fa-history"></i> -->
+    </div>
+</nav>
+    <main class="container">
+
+        <!-- Configuration Section -->
+        <section class="card">
+            <h2>Part Configuration</h2>
+
+            <div class="grid">
+
+                <div class="form-group">
+                    <label for="part">Part</label>
+                    <select id="part">
+                        <option>Select Part</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="robot">Paint Robot</label>
+                    <select id="robot">
+                        <option>Select Paint Robot</option>
+                        <option>Paint Robot 1</option>
+                        <option>Paint Robot 3</option>
+                        <option>Paint Robot 4</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <select id="color">
+                        <option>Select Color</option>
+                        <option>Black</option>
+                        <option>Dark Atmosphere</option>
+                        <option>Pebble</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="flame">Flame Requirment</label>
+                    <select id="flame">
+                        <option>Select Flame</option>
+                        <option>YES</option>
+                        <option>NO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="style">Style / Robot Program Number</label>
+                    <select id="style">
+                        <option>Select Style</option>
+                        <option>000</option>                        
+                        <option>111</option>
+                        <option>222</option>
+                        <option>Add New</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button class="button">Save Configuration</button>
+        </section>
+
+        <!-- Data Display Section -->
+        <section class="card">
+            <h2>Current Configurations</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Part</th>
+                        <th>Robot</th>
+                        <th>Color</th>
+                        <th>Flame</th>
+                        <th>Style</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will go here -->
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</body>
+</html>
