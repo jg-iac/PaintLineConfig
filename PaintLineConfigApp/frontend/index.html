@@ -11,7 +11,7 @@
         * {
             margin: 0;
             padding: 0;
-            /* box-sizing: border-box; */
+            box-sizing: border-box;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -116,12 +116,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .nav-left,
-        .nav-right {
-            display: flex;
-            align-items: center;
             gap: 1rem;
         }
 
@@ -129,30 +123,67 @@
             font-size: 1.25rem;
             cursor: pointer;
             transition: 0.2s;
+            color: #ffffff;
         }
 
         .nav-icon:hover {
             color: #60a5fa;
         }
 
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+
         .style-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+
+
+        .checkbox-group {
+            /* display: flex; */
+            gap: 20px;
+            align-items: center;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin: 0;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #999;
+            border-radius: 4px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+
+.part-row {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-
-.style-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.style-row select {
+.part-row select {
     flex: 1;
 }
 
-#newStyleBtn {
+#newPartBtn {
     width: 45px;
     min-width: 45px;
     height: 45px;
@@ -160,6 +191,16 @@
     font-size: 1.25rem;
     background: #1c9404;
     color: white;
+}
+        #newPartBtn:hover {
+            background-color: #177a03;
+        }
+#deleteRowBtn {
+    background-color: #dc2626;
+}
+
+#deleteRowBtn:hover {
+    background-color: #b91c1c;
 }
     </style>
 </head>
@@ -173,8 +214,7 @@
     <div class="nav">
         <h1>IAC Alma - Paint Line Configuration</h1>
         <i class="fa-solid fa-house nav-icon"></i>
-        <!-- <i class="fa-solid fa-history"></i> -->
-        <!-- <i class="fa-solid fa-magnifying-glass nav-icon"></i> -->
+        <a href="http://10.97.13.50/pages/hmi/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-camera nav-icon"></i></a>
          <i class="fa-solid fa-clipboard-list nav-icon"></i>
         <i class="fa-solid fa-right-from-bracket nav-icon"></i>
     </div>
@@ -189,56 +229,88 @@
 
                 <div class="form-group">
                     <label for="part">Part</label>
-                    <select id="part">
-                        <option>Select Part</option>
-                        <option>w150 LH</option>
-                    </select>
-                </div>
+                    <div class="part-row">
+
+                        <select id="part">
+                            <option>Select Part</option>
+                            <!-- <option>w150 LH</option> -->
+                            <option>w421 RH</option>
+                            <option>w421 LH</option>
+                            <option>w424 RH</option>
+                            <option>w424 LH</option>
+                            <option>w425 RH</option>
+                            <option>w425 LH</option>
+                            <option>w426 RH</option>
+                            <option>w426 LH</option>
+                            <option>w727</option>
+                            <option>w741</option>
+                            <option>w743</option>
+                        </select>
+                        <button id="newPartBtn" class="button"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="robot">Paint Robot</label>
+                    <label for="robot">&#x1F58C;&#xFE0F;Paint Robot</label>
                     <select id="robot">
                         <option>Select Paint Robot</option>
                         <option>Paint Robot 1</option>
                         <option>Paint Robot 3</option>
                         <option>Paint Robot 4</option>
-
                     </select>
-                </div>
+                </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="color">Color</label>
+                    <label for="color">&#127912; Color</label>
                     <select id="color">
                         <option>Select Color</option>
                         <option>Black</option>
                         <option>Dark Atmosphere</option>
+                        <option>Very Dark Atmosphere</option>
                         <option>Pebble</option>
+                        <option>Flint</option>
                     </select>
-                </div>
+                </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="flame">Flame Requirment</label>
-                    <select id="flame">
-                        <option>Select Flame</option>
-                        <option>YES</option>
-                        <option>NO</option>
-                    </select>
-                </div>
+                    <label for="flame-checkbox-group">&#128293; Flame Requirement </label>
+
+                    <div class="checkbox-group" id="flame-checkbox-group">
+                        <label>
+                            <input type="checkbox" id="flame1">
+                            Flame 1
+                        </label>
+                        <label>
+                            <input type="checkbox" id="flame2">
+                            Flame 2
+                        </label>
+                    </div>
+                </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="style">Style / Robot Program Number</label>
+                    <label for="style">&#x2699;&#xFE0F; Style / Robot Program Number</label>
                     <div class="style-row">
                         <select id="style">
                             <option>Select Style</option>
                             <option>000</option>                        
                             <option>111</option>
                             <option>222</option>
-                            <option>Add New</option>
                         </select>
-                        <button id="newStyleBtn" class="button"><i class="fa-solid fa-plus"></i></button>
                     </div>
-                </div>
-            </div>
+                </div> <!--END form-group-->
+
+                <div class="form-group">
+                    <label for="qty">Rack Quantity</label>
+                        <input type="number" id="qty" placeholder="Enter Quantity per Rack" min="1" max="100">
+                </div><!--END form-group-->
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                        <!-- <label id="description"></label> -->
+                         <input type="text" id="description" placeholder="Part description">
+                </div> <!--END form-group-->
+
+            </div> <!--END class="Grid"-->
 
             <button id="saveBtn" class="button">Save Configuration</button>
         </section>
@@ -253,8 +325,11 @@
                         <th>Part</th>
                         <th>Robot</th>
                         <th>Color</th>
-                        <th>Flame</th>
+                        <th>Flame 1</th>
+                        <th>Flame 2</th>
                         <th>Style</th>
+                        <th>Quantity</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="configTableBody">
