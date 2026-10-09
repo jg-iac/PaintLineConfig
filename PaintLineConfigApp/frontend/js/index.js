@@ -50,15 +50,16 @@ console.log("index.js loaded");
             <td>${part}</td>
             <td>${robot}</td>
             <td><span class="color-box" style="background-color: ${colorMap[color]};"></span> ${color}</td>
-            <td>${booleanToString(flame1)}</td>
-            <td>${booleanToString(flame2)}</td>
+            <td>${booleanToString(flame1)}<img class="flame-icon" src="${flame1 ? 'assets/flame_one_on.png' : 'assets/flame_one_off.png'}")}</td>
+            <td>${booleanToString(flame2)}<img class="flame-icon" src="${flame2 ? 'assets/flame_two_on.png' : 'assets/flame_two_off.png'}")}</td>
             <td>${style}</td>
             <td>${qty}</td>
             <td> <button id="deleteRowBtn" class="button"><i class="fa-solid fa-trash"></i></button></td>
-        `;
-
-        tableBody.appendChild(row);
-    });
+            `;
+            
+            tableBody.appendChild(row);
+        });
+        // <td>${booleanToString(flame1)}</td>
 
     const partDescriptions = {
     "w421 RH": "RH Map Pocket (All varieties)",
