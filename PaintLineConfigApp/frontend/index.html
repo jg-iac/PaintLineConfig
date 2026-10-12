@@ -192,9 +192,9 @@
     background: #1c9404;
     color: white;
 }
-        #newPartBtn:hover {
-            background-color: #177a03;
-        }
+#newPartBtn:hover {
+    background-color: #177a03;
+}
 #deleteRowBtn {
     background-color: #dc2626;
 }
@@ -209,7 +209,48 @@
     vertical-align: middle;
 }
 
+#newPartDialog {
+    /* position: fixed; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    margin: auto;
 
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+#newPartDialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-content {
+    padding: 25px;
+}
+
+.dialog-content h2 {
+    margin-bottom: 20px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background-color: #6b7280;
+}
+
+.cancel-btn:hover {
+    background-color: #4b5563;
+}
 
     </style>
 </head>
@@ -260,13 +301,30 @@
                 </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="robot">&#x1F58C;&#xFE0F;Paint Robot</label>
-                    <select id="robot">
+                    <!-- <label for="robot">&#x1F58C;&#xFE0F;Paint Robot</label> -->
+                    <!-- <select id="robot">
                         <option>Select Paint Robot</option>
                         <option>Paint Robot 1</option>
                         <option>Paint Robot 3</option>
                         <option>Paint Robot 4</option>
-                    </select>
+                    </select> -->
+                     <label for="paint-checkbox-group">&#x1F58C;&#xFE0F;Paint Robot</label>
+
+                    <div class="checkbox-group" id="paint-checkbox-group">
+                        <label>
+                            <input type="checkbox" id="paint-robot-1">
+                            Paint Robot 1
+                        </label>
+                        <label>
+                            <input type="checkbox" id="paint-robot-3">
+                            Paint Robot 3
+                        </label>
+                        <label>
+                            <input type="checkbox" id="paint-robot-4">
+                            Paint Robot 4
+                        </label>
+                    </div>
+
                 </div><!--END form-group-->
 
                 <div class="form-group">
@@ -282,7 +340,7 @@
                 </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="flame-checkbox-group">&#128293; Flame Requirement </label>
+                    <label for="flame-checkbox-group">Flame Requirement </label>
 
                     <div class="checkbox-group" id="flame-checkbox-group">
                         <label>
@@ -297,13 +355,21 @@
                 </div><!--END form-group-->
 
                 <div class="form-group">
-                    <label for="style">&#x2699;&#xFE0F; Style / Robot Program Number</label>
+                    <label for="style">Style / Robot Program Number</label>
                     <div class="style-row">
                         <select id="style">
                             <option>Select Style</option>
-                            <option>000</option>                        
-                            <option>111</option>
-                            <option>222</option>
+                            <option>4211</option>                        
+                            <option>4212</option>
+                            <option>4241</option>
+                            <option>4242</option>
+                            <option>4251</option>
+                            <option>4252</option>
+                            <option>4261</option>
+                            <option>4262</option>
+                            <option>7410</option>
+                            <option>7430</option>
+                            <option>7270</option>
                         </select>
                     </div>
                 </div> <!--END form-group-->
@@ -332,7 +398,9 @@
                 <thead>
                     <tr>
                         <th>Part</th>
-                        <th>Robot</th>
+                        <th>Paint Robot 1</th>
+                        <th>Paint Robot 3</th>
+                        <th>Paint Robot 4</th>
                         <th>Color</th>
                         <th>Flame 1</th>
                         <th>Flame 2</th>
@@ -348,6 +416,29 @@
         </section>
 
     </main>
+<dialog id="newPartDialog">
+    <div class="dialog-content">
+        <h2>Add New Part</h2>
+        <div class="form-group">
+            <label for="newPart">New Part</label>
+            <input
+                type="text"
+                id="newPart"
+                placeholder="Enter Part Number">
+        </div>
+        <div class="form-group">
+            <label for="newPartStyle">New Part Style</label>
+            <input
+                type="number"
+                id="newPartStyle"
+                placeholder="Enter Style Number">
+        </div>
+        <div class="dialog-buttons">
+            <button id="saveNewPartBtn" class="button">Add Part</button>
+            <button id="cancelNewPartBtn" class="button cancel-btn">Cancel</button>
+        </div> <!--END dialog buttons-->
+    </div>
+</dialog> <!--END Dialog-->
 
 </body>
 <script src="js/index.js"></script>

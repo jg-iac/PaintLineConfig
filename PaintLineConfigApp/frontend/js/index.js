@@ -22,17 +22,19 @@ console.log("index.js loaded");
     document.getElementById("saveBtn").addEventListener("click", function () {
 
         const part = document.getElementById("part").value;
-        const robot = document.getElementById("robot").value;
+        // const robot = document.getElementById("robot").value;
         const color = document.getElementById("color").value;
         const flame1 = document.getElementById("flame1").checked;
         const flame2 = document.getElementById("flame2").checked;
         const style = document.getElementById("style").value;
         const qty = document.getElementById("qty").value;
-
+        const paint1 = document.getElementById("paint-robot-1").checked;
+        const paint3 = document.getElementById("paint-robot-3").checked;
+        const paint4 = document.getElementById("paint-robot-4").checked;
 
         if (
             part === "Select Part" ||
-            robot === "Select Robot" ||
+            // robot === "Select Robot" ||
             color === "Select Color" ||
             // flame1 === "Select Flame" ||
             style === "Select Style" ||
@@ -48,10 +50,12 @@ console.log("index.js loaded");
 
         row.innerHTML = `
             <td>${part}</td>
-            <td>${robot}</td>
+            <td>${booleanToString(paint1)}</td>
+            <td>${booleanToString(paint3)}</td>
+            <td>${booleanToString(paint4)}</td>
             <td><span class="color-box" style="background-color: ${colorMap[color]};"></span> ${color}</td>
-            <td>${booleanToString(flame1)}<img class="flame-icon" src="${flame1 ? 'assets/flame_one_on.png' : 'assets/flame_one_off.png'}")}</td>
-            <td>${booleanToString(flame2)}<img class="flame-icon" src="${flame2 ? 'assets/flame_two_on.png' : 'assets/flame_two_off.png'}")}</td>
+            <td>${booleanToString(flame1)}</td>
+            <td>${booleanToString(flame2)}</td>
             <td>${style}</td>
             <td>${qty}</td>
             <td> <button id="deleteRowBtn" class="button"><i class="fa-solid fa-trash"></i></button></td>
@@ -97,7 +101,8 @@ document.getElementById("part").addEventListener("change", function () {
     "w426 RH": 1,
     "w426 LH": 1,
     "w741": 30,
-    "w743": 6
+    "w743": 6,
+    "w727":""
 };
 
 document.getElementById("part").addEventListener("change", function () {
@@ -106,4 +111,43 @@ document.getElementById("part").addEventListener("change", function () {
     const qtyField = document.getElementById("qty");
 
     qtyField.value = partQty[selectedPart] || "";
+});
+
+
+    const partStyle = {
+    "w421 RH": 4211,
+    "w421 LH": 4212,
+    "w424 RH": 4241,
+    "w424 LH": 4242,
+    "w425 RH": 4251,
+    "w425 LH": 4252,
+    "w426 RH": 4261,
+    "w426 LH": 4262,
+    "w741": 7410,
+    "w743": 7430,
+    "w727": 7270
+};
+
+document.getElementById("part").addEventListener("change", function () {
+
+    const selectedPart = this.value;
+    const styleField = document.getElementById("style");
+
+    styleField.value = partStyle[selectedPart] || "";
+});
+
+
+
+{/* <button id="newPartBtn" class="button"><i class="fa-solid fa-plus"></i></button> */}
+
+const newPartDialog = document.getElementById("newPartDialog");
+const newPartBtn = document.getElementById("newPartBtn");
+const cancelNewPartBtn = document.getElementById("cancelNewPartBtn");
+
+newPartBtn.addEventListener("click", function () {
+    newPartDialog.showModal();
+});
+
+cancelNewPartBtn.addEventListener("click", function () {
+    newPartDialog.close();
 });
